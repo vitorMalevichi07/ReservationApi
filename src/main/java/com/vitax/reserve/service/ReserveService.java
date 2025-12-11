@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class ReserveService {
 
-    private List<Reserve> reserves = new ArrayList<>();
+    private final List<Reserve> reserves = new ArrayList<>();
 
     public List<Reserve> getReserves() {
         return reserves;
@@ -22,8 +22,9 @@ public class ReserveService {
                 .orElse(null);
     }
 
-    public void addReserve(Reserve reserve) {
+    public List<Reserve> addReserve(Reserve reserve) {
         reserves.add(reserve);
+        return reserves;
     }
 
     public void deleteReserve(Long id) {

@@ -11,9 +11,6 @@ public class Reserve {
     private String tableNumber;
 
     //Constructors
-    public Reserve() {
-    }
-
     public Reserve(Long id, LocalDateTime reserveDate, String customerName, String customerEmail, String tableNumber) {
         this.id = id;
         this.reserveDate = reserveDate;

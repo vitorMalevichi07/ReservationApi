@@ -27,8 +27,8 @@ public class ReserveController {
     }
 
     @PostMapping
-    public void addReserve(Reserve reserve) {
-        reserveService.addReserve(reserve);
+    public List<Reserve> addReserve(Reserve reserve) {
+        return reserveService.addReserve(reserve);
     }
 
     @DeleteMapping("/{id}")
