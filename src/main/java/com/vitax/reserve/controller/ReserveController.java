@@ -22,13 +22,13 @@ public class ReserveController {
     }
 
     @GetMapping("/{id}")
-    public Reserve getReserveById(Long id) {
+    public Reserve getReserveById(@PathVariable Long id) {
         return reserveService.getReserveById(id);
     }
 
     @PostMapping
-    public List<Reserve> addReserve(Reserve reserve) {
-        return reserveService.addReserve(reserve);
+    public void addReserve(@RequestBody Reserve reserve) {
+        reserveService.addReserve(reserve);
     }
 
     @DeleteMapping("/{id}")

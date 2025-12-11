@@ -22,9 +22,8 @@ public class ReserveService {
                 .orElse(null);
     }
 
-    public List<Reserve> addReserve(Reserve reserve) {
+    public void addReserve(Reserve reserve) {
         reserves.add(reserve);
-        return reserves;
     }
 
     public void deleteReserve(Long id) {
