@@ -2,12 +2,19 @@ package com.vitax.reserve.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class Reserve {
 
+    @NotBlank
     private Long id;
+    @NotBlank
     private LocalDateTime reserveDate;
+    @NotBlank
     private String customerName;
+    @NotBlank
     private String customerEmail;
+    @NotBlank
     private String tableNumber;
 
     //Constructors
