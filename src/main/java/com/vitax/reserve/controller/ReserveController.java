@@ -1,10 +1,17 @@
 package com.vitax.reserve.controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.vitax.reserve.model.Reserve;
 import com.vitax.reserve.service.ReserveService;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/reserve")
@@ -27,12 +34,12 @@ public class ReserveController {
     }
 
     @PostMapping
-    public void addReserve(@RequestBody Reserve reserve) {
-        reserveService.addReserve(reserve);
+    public List<Reserve> addReserve(@RequestBody Reserve reserve) {
+        return reserveService.addReserve(reserve);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteReserve(@PathVariable Long id) {
-        reserveService.deleteReserve(id);
+    public List<Reserve> deleteReserve(@PathVariable Long id) {
+        return reserveService.deleteReserve(id);
     }
 }

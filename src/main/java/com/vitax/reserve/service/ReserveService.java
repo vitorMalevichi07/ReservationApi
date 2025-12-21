@@ -1,33 +1,35 @@
 package com.vitax.reserve.service;
 
-import com.vitax.reserve.model.Reserve;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.vitax.reserve.model.Reserve;
+import com.vitax.reserve.repository.ReserveRepository;
 
 @Service
 public class ReserveService {
 
-    private final List<Reserve> reserves = new ArrayList<>();
+    @Autowired
+    private ReserveRepository reserveRepository;
 
     public List<Reserve> getReserves() {
-        return reserves;
+        return reserveRepository.findAll();
     }
 
-    public Reserve getReserveById(Long id) {
-        return reserves.stream()
-                .filter(reserve -> reserve.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+   public Reserve getReserveById(Long id) {
+        return reserveRepository.findById(id)
+            .orElse(null);
     }
 
-    public void addReserve(Reserve reserve) {
-        reserves.add(reserve);
+    public List<Reserve> addReserve(Reserve reserve) {
+        reserveRepository.save(reserve);
+        return getReserves();
     }
 
-    public void deleteReserve(Long id) {
-        reserves.removeIf(reserve -> reserve.getId().equals(id));
+    public List<Reserve> deleteReserve(Long id) {
+        reserveRepository.deleteById(id);
+        return getReserves();
     }
-
 }
